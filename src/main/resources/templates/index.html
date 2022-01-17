@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link href="resource/style/style.css" rel="stylesheet" />
+    <link th:href="@{/resource/style/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="dashboard">
+
+
+
+    <div th:replace="fragments/sidebar"></div>
+
+    <div class="mock-sidebar"></div>
+
+    <div class="dash-main">
+
+        <div class="main-info">
+
+            <h1>ITEC447 - Web Projects</h1>
+
+            <span style="font-size:12pt;line-height:2;font-family:calibri, sans-serif;">This course aims to encourage students to improve their team-working skills in web-based projects. The course focuses on designing, developing and presenting real-life web projects. Students who take this course will use one or more web development tools in order to design and develop websites. They will also learn how to deal with HTML, CSS, JavaScript, PHP, MySQL, web templates, web forms, JQuery, and Flash-based contents.</span>
+
+            <table width="100%">
+                <tr>
+                    <td><a href="#">Course Outline</a> </td>
+                    <td><a href="#">Lab Materials</a> </td>
+                </tr>
+                <tr>
+                    <td><a href="#">Lecture Notes</a> </td>
+                    <td><a href="#">Announcement</a> </td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

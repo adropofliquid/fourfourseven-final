@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Request</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link href="resource/style/style.css" rel="stylesheet" />
+    <link th:href="@{/resource/style/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+<div class="dashboard">
+
+
+
+    <div th:replace="fragments/sidebar"></div>
+
+
+    <div class="mock-sidebar"></div>
+
+    <div class="dash-main">
+
+        <div class="main-info bright-white-emu-bg">
+            <div th:if="${errorExist eq 1}" class="notification-main bright-white-emu-bg">
+                <p th:if="${error eq errorType.SUCCESS}" th:text="${error}" style="background: green;"></p>
+                <p th:if="${error eq errorType.ONLY_ACADEMY_STAFF}" th:text="${error}" style="background: red;"></p>
+                <p th:if="${error eq errorType.CAPTCHA}" th:text="${error}" style="background: red;"></p>
+            </div>
+
+            <h1>Request for Website</h1>
+            <form method="post" th:action="@{/request}" th:object="${request}">
+                <table width="100%" class="table-form">
+                <tr>
+                    <td>
+                        <p>Personel No*</p>
+                        <i>Personel Numarasi</i>
+                    </td>
+                    <td><input th:field="*{personel}" type="text" placeholder="Personel No*" name="personel" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Name Surname *</p>
+                        <i>isim Soyisim</i>
+                    </td>
+                    <td><input th:field="*{name}" type="text" placeholder="Name Surname *" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>E-Mail *</p>
+                        <i>E-Posta</i>
+                    </td>
+                    <td><input th:field="*{email}" type="text" placeholder="E-Mail *" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Department *</p>
+                    </td>
+                    <td><input th:field="*{department}" type="text" placeholder="Department *" name="department" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Required Website Languages</p>
+                        <i>Istenilen Web Sitesi Dilleri. (Birden fazla dil secenegi icin Web Ofisini 2513 veya 2517 numarali telefonlordon arayip bilgi alabilirsiniz.) (For multiple languages please call Web Office from 2513 or 2517)</i>
+                    </td>
+                    <td>
+                        <input th:field="*{language}" type="radio" id="english" name="language" value="English" th:checked="checked" checked="checked">
+                        <label for="english">English</label><br>
+
+                        <input th:field="*{language}" type="radio" id="turkish" name="language" value="Turkish">
+                        <label th:field="*{language}" for="turkish">Turkish</label><br>
+
+                        <input th:field="*{language}" type="radio" id="other" name="import" value="Other">
+                        <label for="other">Other</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Security Check *</p>
+                    </td>
+                    <td><span th:text="${captcha.toString()}">2+2 = </span>
+                        <input th:field="*{captchaInput}" type="text" placeholder="Security Check *" name="security" required>
+                        <input th:value="${captcha.getAnswer()}" type="hidden" name="captcha">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <button type="submit">Send</button>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

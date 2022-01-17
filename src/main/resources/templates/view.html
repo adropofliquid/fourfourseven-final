@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Requests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link href="resource/style/style.css" rel="stylesheet" />
+    <link th:href="@{/resource/style/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="dashboard">
+
+
+
+    <div th:replace="fragments/sidebar"></div>
+
+
+    <div class="mock-sidebar"></div>
+
+    <div class="dash-main">
+
+        <div class="main-info bright-white-emu-bg">
+
+
+            <h1>All Requests</h1>
+
+            <div class="products-list">
+                <table>
+                    <tr th:if="${requests.isEmpty()}">
+                        <td colspan="5" align="center">No Requests yet</td>
+                    </tr>
+
+                    <tr th:each="request : ${requests}">
+                        <td><span th:text="${request.getPersonel()}">Personel</span></td>
+                        <td><span th:text="${request.getName()}">Name</span></td>
+                        <td><span th:text="${request.getEmail()}">mail@mail.com</span></td>
+                        <td><span th:text="${request.getDepartment()}">Department</span></td>
+                        <td><span th:text="${request.getLanguage()}">English</span></td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
